@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Input, Button } from '../Styled/SearchFormStyle';
 
 function SearchForm(props) {
@@ -21,17 +22,17 @@ function SearchForm(props) {
   return (
     <div>
       <form>
-      <Input
-        type="text"
-        placeholder={props.placeholder}
-        value={value}
-        onChange={changeValue}
-        autoComplete="off"
-      />
+        <Input
+          type="text"
+          placeholder={props.placeholder}
+          value={value}
+          onChange={changeValue}
+          autoComplete="off"
+        />
 
-      <Button onClick={event => { submitValue(event) }}>
-        {props.buttonText}
-      </Button>
+        <Button onClick={event => { submitValue(event) }}>
+          {props.buttonText}
+        </Button>
       </form>
     </div>
   )
