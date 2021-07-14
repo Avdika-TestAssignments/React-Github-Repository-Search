@@ -3,10 +3,10 @@ import axios from 'axios';
 import { trackPromise } from 'react-promise-tracker';
 
 import { Container } from '../Styled/SearchStyle';
-import SearchForm from '../Components/SearchForm';
-import Repos from '../Components/Repositories';
-import Spinner from '../Components/Spinner';
-import NotFound from '../Components/NotFound';
+import SearchForm from './SearchForm';
+import Repos from './Repositories';
+import Spinner from './Spinner';
+import NotFound from './NotFound';
 
 function Search() {
   const [repos, setRepos] = React.useState([]);

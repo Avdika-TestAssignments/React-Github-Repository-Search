@@ -29,7 +29,6 @@ function SearchForm(props) {
           onChange={changeValue}
           autoComplete="off"
         />
-
         <Button onClick={event => { submitValue(event) }}>
           {props.buttonText}
         </Button>
