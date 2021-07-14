@@ -6,13 +6,16 @@ import { Container } from '../Styled/SearchStyle';
 import SearchForm from '../Components/SearchForm';
 import Repos from '../Components/Repositories';
 import Spinner from '../Components/Spinner';
+import NotFound from '../Components/NotFound';
 
 function Search() {
   const [repos, setRepos] = React.useState([]);
+  const [emptySearch, setEmptySearch] = React.useState(false);
 
-  React.useEffect(() => {
-    searchRepos('');
-  }, []);
+  const handleResult = result => {
+    setRepos(result);
+    setEmptySearch(result.length === 0);
+  };
 
   const searchRepos = (keyword) => {
     setRepos([]);
@@ -20,7 +23,7 @@ function Search() {
     trackPromise(
       axios
         .get(`https://api.github.com/search/repositories?q=${keyword}+in%3Aname&sort=stars&order=desc`)
-        .then(result => setRepos(result.data.items))
+        .then(result => handleResult(result.data.items))
         .catch((error) => {
           console.log('we have received an error: ', error);
         }));
@@ -33,6 +36,7 @@ function Search() {
         buttonText="Search"
         onSubmit={value => searchRepos(value)}
       />
+      { emptySearch && (<NotFound />) }
       <Spinner />
       <Repos items={repos} />
     </Container>
